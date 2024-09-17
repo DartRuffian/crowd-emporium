@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crowd Emporium</title>
+    <link rel="icon" type="image/x-icon" href="assets\Images\logo_ce.png">
+    <link href="events.css" rel="stylesheet" type="text/css" media="all">
+
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <div class="image-container">
+        <img src="/website/events/images/Crowd Emporium Logo4.png" alt="Logo" id="logo">
+        </div>
+        <h1>Crowd Emporium</h1>
+    </header>
+
+    <nav>
+        <a href="aboutus.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <!-- <a href="#">Sign in/Sign up/Sign out</a> -->
+        <a id="loginStatusA"></a>
+        <input type="text" class="search-bar" placeholder="Search">
+
+
+    </nav>
+
+    <section>
+        <div id="eventsContainer">
+            <!-- Events will be dynamically added here -->
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Concert Website</p>
+    </footer>
+</div>
+
+<script src="displayEvents.js"></script>
+<script src="getUserInfo.js"></script> <!-- Script that reads user data so it can render admin page based off user_id-->
+<script>
+    // Change the nav link to "Login/Sign Up" or "My Account" based on whether user is signed in or out
+    const loginStatus = document.getElementById('loginStatusA');
+    const token = localStorage.getItem('token');
+
+    //test purpose
+    console.log(token);
+
+    if (token === null) {
+        loginStatus.innerHTML = '<a href="login.html">Login/Sign Up</a>';
+    } else {
+        // Call getUserInfo to fetch user information
+        getUserInfo(token).then(userInfo => {
+            if (userInfo && userInfo.is_admin === true) {
+                loginStatus.innerHTML = '<a href="BodiesUI/analytics/analytics.html">My Admin Account</a>';
+            } else {
+                loginStatus.innerHTML = '<a href="accountInformation.html">My Account</a>';
+            }
+        });
+    }
+    </script>
+</body>
+</html>

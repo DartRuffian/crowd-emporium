@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Tickets</title>
+    <link rel="stylesheet" type="text/css" href="/website/assets/css/style-starter.css">
+    <link rel="stylesheet" type="text/css" href="/website/assets/css/progress-bar.css">
+    <link rel="stylesheet" type="text/css" href="tickets.css">
+    <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="\website\assets\images\logo_ce.png">
+    <script src="tickets.js" defer></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header id="site-header" class="w3l-header fixed-top">
+            <nav class="navbar navbar-expand-lg navbar-light fill px-lg-0 py-0 px-3">
+                <div class="container">
+                    <h1>
+                        <img src="/website/events/images/Crowd Emporium Logo4.png" alt="Logo" id="logo">Crowd Emporium</img>
+                    </h1>
+                </div>
+            </nav>
+        </header>
+        <!-- progress bar -->
+        <div id="progress-container">
+            <div class="row">
+                <div class="col">
+                    <div class="px-0 pt-4 pb-0 mt-3 mb-3">
+                        <form id="form">
+                            <ul id="progress-bar">
+                                <li id="step1" class="progress-active">Section Selection</li>
+                                <li id="step2" class="progress-active">Seat Selection</li>
+                                <li id="step3" class="progress-active">Payment</li>
+                                <li id="step4" class="progress-active">E-Ticket</li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end progress bar-->
+        <section class="container">
+            <div id="ticketInformationContainer"> <!-- div class="ticket" -->
+                <!-- ticket information will be added here -->
+            </div>
+        </section>
+        <div class="buttons">
+            <button id="eventsPageButton" class="goEvents" onclick="goToEvents()">Return to events</button>
+            <button id="accountInformationPageButton" class="toAccount" onclick="goToTAccountInformation()">See all your
+                tickets</button>
+        </div>
+    </div>
+
+</body>
+
+</html>

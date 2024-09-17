@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<head>
+    <meta charset='utf-8'>
+    <meta content='IE=edge' http-equiv='X-UA-Compatible'>
+    <title>About Crowd Emporium</title>
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+
+    <link rel="icon" type="image/x-icon" href="\website\assets\Images\logo_ce.png">
+    <link href="contact.css" rel="stylesheet" type="text/css" media="all">
+    <link href="events.css" rel="stylesheet" type="text/css" media="all">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="image-container">
+                <img src="/website/events/images/Crowd Emporium Logo4.png" alt="Logo" id="logo">
+            </div>
+            <h1>Crowd Emporium</h1>
+        </header>
+
+        <nav>
+            <a href="aboutus.html">About Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="events.html">Events</a>
+            <a id="loginStatusA"></a>
+        </nav>
+   </div>
+
+    <div class="container">
+        <div class="column">
+            <h2>Email</h2>
+            <p>Email us at: <br>
+                <a href="mailto:crowdemporium@gmail.com">crowdemporium@gmail.com</a></p>
+        </div>
+        <div class="column">
+            <h2>Phone</h2>
+            <p>Call or text us at: <br>
+                (913) 123-1234</p>
+        </div>
+        <div class="column">
+            <h2>Live Chat</h2>
+            <p>For simple Q&A, chat with our 24/7 bot at: <br>
+                <a href="crowdemporium.com/livechat">crowdemporium.com/livechat</a></p>
+        </div>
+        <div class="column">
+            <h2>Social Media</h2>
+            <p>Catch us on your favorite social media platform: <br><br>
+                𝕏<br><a href="twitter.com/crowdemporium">twitter.com/crowdemporium</a><br><br>
+                <i style="font-size:24px" class="fa">&#xf16d;</i><a href="instagram.com/crowdemporium">instagram.com/crowdemporium</a><br><br>
+                <i class="fa fa-facebook" aria-hidden="true"></i><br>
+                <a href="facebook.com/crowdemporium">facebook.com/crowdemporium</a><br><br>
+            </p>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <footer>
+            <p>&copy; 2024 Concert Website</p>
+        </footer>
+    </div>
+</body>
+
+<script>
+    // Change the nav link to "Login/Sign Up" or "My Account" based on whether user is signed in or out
+    const loginStatus = document.getElementById('loginStatusA');
+    const token = localStorage.getItem('token');
+    if (token === null) {
+        loginStatus.innerHTML = '<a href="login.html">Login/Sign Up</a>';
+    } else {
+        loginStatus.innerHTML = '<a href="accountInformation.html">My Account</a>';
+    }
+</script>

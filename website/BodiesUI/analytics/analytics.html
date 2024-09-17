@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Admin Account</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="analytics.css">
+    <link rel="icon" type="image/x-icon" href="\website\assets\images\logo_ce.png">
+    <script src="analytics.js" defer></script>
+    <script src="displayAllSections.js" defer></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="image-container">
+                <img src="/website/events/images/Crowd Emporium Logo4.png" alt="Logo" id="logo">
+            </div>
+            <h1>Crowd Emporium</h1>
+        </header>
+
+        <nav>
+            <a href="../aboutus.html">About Us</a>
+            <a href="../contact.html">Contact</a>
+            <a href="http://127.0.0.1:8000/website/events.html">Events</a>
+            <a class="signOutButton" onclick="signOut()">Sign Out</a>
+            <a class="updateEventButton" href="updateEvent.html">Update Event</a>
+            <a class="createEventButton" href="createEvent.html">Create Event</a>
+
+        </nav>
+
+        <div class="container">
+            <h1>Admin Account Information</h1>
+            <!-- Where the account information will show -->
+            <div id="adminInformation"></div>
+
+            <!-- Dropdown menu for selecting events -->
+            <label for="eventDropdown">Select Event:</label>
+            <select id="eventDropdown" class="custom-select">
+                <!-- Options will be dynamically populated by JavaScript -->
+            </select>
+
+            <!-- Container for reserved seats section -->
+            <div id="reservedSeats"></div>
+
+            <!-- Container for section details -->
+            <div id="sectionDetails"></div>
+
+            <!-- Button to display all sections -->
+            <button id="displayAllSections" class="display-all-sec" type="button">Display All Sections</button>
+
+        </div>
+
+        <footer>
+            <p>&copy; 2024 Concert Website</p>
+        </footer>
+    </div>
+    <script>
+        function signOut() {
+            localStorage.clear();
+            document.location.href = "http://127.0.0.1:8000/website/events.html";
+        }
+    </script>
+    <script>
+        document.getElementById('displayAllSections').addEventListener('click', () => {
+            // Clear the section data container
+            const sectionDataContainer = document.getElementById('sectionDetails');
+            if (sectionDataContainer) {
+                sectionDataContainer.innerHTML = '';
+            }
+
+            // Reset the value of the section dropdown to "Select Section"
+            const sectionDropdown = document.getElementById('sectionDropdown');
+            if (sectionDropdown) {
+                sectionDropdown.value = ''; // Set value to empty string
+            }
+        });
+    </script>
+
+</body>
+
+</html>

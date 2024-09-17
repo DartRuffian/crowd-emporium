@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Movie Ticket Booking Widget Flat Responsive Widget Template :: w3layouts</title>
+	<!-- for-mobile-apps -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords"
+		content="Movie Ticket Booking Widget Responsive, Login form web template, Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<script src="js/jquery-1.11.0.min.js"></script>
+	<script src="js/jquery.seat-charts.js"></script>
+    <script src="/website/insertEventData.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700" rel="stylesheet">
+
+</head>
+
+<body>
+<div class="content">
+	<h2>Section Booking</h2>
+	<div class="main">
+		<div class="demo">
+			<div id="seat-map">
+				<div class="front">STAGE</div>
+			</div>
+			<div class="booking-details">
+				<ul class="book-left">
+					<li>Event</li>
+					<li>Date</li>
+                    <li>Time</li>
+
+				</ul>
+                <ul id="event-details-section" class="book-right">
+                    <!-- Event details will be dynamically inserted here -->
+                </ul>
+				<div class="clear"></div>
+				<ul id="selected-seats" class="scrollbar scrollbar1"></ul>
+
+
+				<div id="legend"></div>
+			</div>
+
+			<script type="text/javascript">
+				$(document).ready(function () {
+
+					var sc = $('#seat-map').seatCharts({
+						map: [ //Seating chart
+
+							'a________a',
+							'_a______a_',
+							'__aaaaaa__',
+
+
+						],
+						naming: {
+							top: false,
+							getLabel: function (character, row, column) {
+								return column;
+							}
+						},
+						legend: { //Definition legend
+							node: $('#legend'),
+							items: [
+								['a', 'available', 'Available'],
+								['a', 'unavailable', 'Sold'],
+								['a', 'selected', 'Selected']
+							]
+						},
+
+					});
+                    /*
+                        // Fetch URL
+                        fetch(`/event/${eventId}`)
+                            .then(response => response.json())
+                            .then(data => {
+
+                                let ticketsLink = `/website/ticket-booking.html?event_id=${event.event_id}`;
+                                // Handle the response data here
+                                console.log('url path:' + ticketsLink);
+                                // Example: Update the event details in the HTML
+                                $('#event-details-section').html(`<li>${data.name}</li><li>${data.date}</li><li>${data.time}</li>`);
+                            })
+                            .catch(error => {
+                                // Handle errors
+                                console.error('Error fetching event data:', error);
+                            });
+                    */
+                        // Function to retrieve the eventId from local storage
+                        function getStoredEventId() {
+                            // Retrieve the eventId from local storage
+                            const eventId = localStorage.getItem('eventId');
+
+                            if (eventId) {
+                                // If eventId exists, return it
+                                console.log('Event ID retrieved from local storage:', eventId);
+                                return eventId;
+                            } else {
+                                console.error('Event ID not found in local storage.');
+                                return null;
+                            }
+                        }
+
+
+                        // Separate click event handler for section selection
+                        $('#seat-map .seatCharts-cell').click(function () {
+                        var section = $(this).attr('id');
+
+                        var sectionId = section.split('_').pop();
+
+                        // shows current selected section in console
+                        console.log('Section selected:', sectionId);
+
+                        // Get the current URL
+                        var currentUrl = window.location.href;
+                        console.log('current url: ' + currentUrl);
+
+                        // Extract the event_id from the URL
+                        var urlParams = new URLSearchParams(window.location.search);
+                        var eventId = getStoredEventId();
+
+                        // Construct the updated URL with section_id appended
+                        var updatedUrl = currentUrl.split('?')[0] + '?event_id=' + eventId + '&section_id=' + sectionId;
+
+                        // Gets parameters of URL based on current window location
+                        function getSearchParameters() {
+                            console.log("Window Location: ", updatedUrl);
+                            var prmstr = updatedUrl.substr(1);
+                            console.log("Query string:", updatedUrl.search());
+                            console.log("Processed query string: ", prmstr);
+                            return prmstr != null && prmstr != "" ? transformToAssocArray(prmstr) : {};
+                        }
+
+                        // Inserts parameters into array
+                        function transformToAssocArray(prmstr) {
+                            var params = {};
+                            var prmarr = prmstr.split("&");
+                            for (var i = 0; i < prmarr.length; i++) {
+                                var tmparr = prmarr[i].split("=");
+                                params[tmparr[0]] = tmparr[1];
+                            }
+                            return params;
+                        }
+
+                        // call function
+                        var params = getSearchParameters();
+
+                        //test
+                        console.log(params)
+
+                        // Redirect the user to the updated URL
+                        // window.location.href = updatedUrl;
+
+                        /*
+                        $.ajax({
+                                type: 'POST',
+                                url: 'your_endpoint_url_here', // Replace with your endpoint URL
+                                data: { sectionId: sectionId },
+                                success: function (response) {
+                                    // Handle successful response from the server
+                                    console.log('Section ID sent successfully:', sectionId);
+                                },
+                                error: function (xhr, status, error) {
+                                    // Handle errors
+                                    console.error('Error sending section ID:', error);
+                                }
+                            });
+                        */
+                    });
+
+				});
+
+
+			</script>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/theme-change-seat-sel.js"></script>
+	<script src="js/jquery.nicescroll.js"></script>
+	<script src="js/scripts.js"></script>
+</body>
+
+</html>

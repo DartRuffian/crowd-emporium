@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Admin Account</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="analytics.css">
+    <link rel="icon" type="image/x-icon" href="\website\assets\images\logo_ce.png">
+    <script src="deleteEvent.js"></script>
+    <script src="updateEvent.js"></script>
+    <script src="displayEventAdmin.js"></script>
+    <script src="formSub.js"></script>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="image-container">
+                <img src="/website/events/images/Crowd Emporium Logo4.png" alt="Logo" id="logo">
+            </div>
+            <h1>Crowd Emporium</h1>
+        </header>
+
+        <nav>
+            <a href="../aboutus.html">About Us</a>
+            <a href="../contact.html">Contact</a>
+            <a href="http://127.0.0.1:8000/website/events.html">Events</a>
+            <a id="loginStatusA"></a>
+            <a class="signOutButton" onclick="signOut()">Sign Out</a>
+        </nav>
+
+        <select class="update-select" id="eventDropdown">
+            <!-- Options will be dynamically populated here -->
+        </select>
+
+        <div class="container">
+            <!-- Updated form id to match JavaScript -->
+            <form id="updateEventForm">
+                <label for="eventId">Event ID:</label>
+                <input type="text" id="eventId" name="eventId"><br><br>
+
+                <label for="eventName">Event Name:</label>
+                <input type="text" id="eventName" name="eventName"><br><br>
+
+                <label for="eventDate">Event Date:</label>
+                <input type="date" id="eventDate" name="eventDate"><br><br>
+
+                <label for="eventTime">Event Time:</label>
+                <input type="time" id="eventTime" name="eventTime"><br><br>
+
+                <label for="seatPrice">Seat Price:</label>
+                <input type="number" id="seatPrice" name="seatPrice"><br><br>
+
+                <label for="seatPrice">Seat Price Original:</label>
+                <input type="number" id="seatPriceOg" name="seatPriceOg"><br><br>
+
+                <label for="seatPriceVip">Seat Price Vip Mod:</label>
+                <input type="number" id="seatPriceVip" name="seatPriceVip" step="0.01"><br><br>
+
+                <label for="seatPriceRes">Seat Price Res Mod:</label>
+                <input type="number" id="seatPriceRes" name="seatPriceRes" step="0.01"><br><br>
+
+                <button type="submit" class="update" id="updateButton">Update Event</button>
+                <button type="submit" class="delete" id="deleteButton">Delete Event</button>
+            </form>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Concert Website</p>
+    </footer>
+
+    <script src="/website/getUserInfo.js"></script>
+    <!-- Script that reads user data so it can render admin page based off user_id-->
+
+    <script>
+        function signOut() {
+            localStorage.clear();
+            document.location.href = "http://127.0.0.1:8000/website/events.html";
+        }
+    </script>
+    <script>
+        // Change the nav link to "Login/Sign Up" or "My Account" based on whether user is signed in or out
+        const loginStatus = document.getElementById('loginStatusA');
+        const token = localStorage.getItem('token');
+
+        //test purpose
+        console.log(token);
+
+        if (token === null) {
+            loginStatus.innerHTML = '<a href="login.html">Login/Sign Up</a>';
+        } else {
+            // Call getUserInfo to fetch user information
+            getUserInfo(token).then(userInfo => {
+                if (userInfo && userInfo.user_id === 1) {
+                    loginStatus.innerHTML = '<a href="analytics.html">My Admin Account</a>';
+                } else {
+                    loginStatus.innerHTML = '<a href="accountInformation.html">My Account</a>';
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

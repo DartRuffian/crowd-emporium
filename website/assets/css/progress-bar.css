@@ -1,0 +1,162 @@
+:root {
+    --theme-progress-bar: #D3D3D3;
+}
+.navbar-brand {
+    display: inline-block;
+    padding-top: 0.5rem;
+    margin-right: auto;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+    margin-left: -25rem;
+  }
+
+  #progress-container {
+    position: relative; /* Set position to relative */
+    margin-left: 100px; /* Add margin to center horizontally */
+    max-width: 1200px; /* Limit the width to match the wrapper */
+}
+
+#progress-bar {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    overflow: hidden;
+    color: var(--theme-progress-bar);
+}
+
+#progress-container #form {
+    text-align: center;
+    position: relative;
+    /* margin-top: 20px; */
+    /* border: 1px solid white; */
+    width: 75%;
+    /* text-align: center; */
+    margin: 0 auto;
+}
+
+#progress-container #form .previous-step, .next-step {
+    width: min-content;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 0px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    padding: 10px 35px;
+    margin: 10px 5px 10px 0px;
+    float: right;
+    border-radius: 22px;
+}
+
+.form, .previous-step {
+    background: #616161;
+}
+
+.form, .next-step {
+    margin-left: 20px;
+    margin-right: 20px;
+    background: var(--theme-rose);
+}
+
+#progress-container #form .previous-step:hover,
+#progress-container #form .previous-step:focus {
+    background-color: var(--theme-title);
+    color: var(--theme-bg)
+}
+
+#progress-container #form .next-step:hover,
+#progress-container #form .next-step:focus {
+    background-color: #c70050
+}
+
+#progress-container #form .next-step:disabled {
+    background-color: #443d40
+}
+
+#progress-bar {
+    margin-top: 45px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    color: var(--theme-progress-bar);
+}
+
+#progress-bar .progress-active {
+    color:#df0e62  /* text color for active progess bar */
+}
+
+#progress-bar li {
+    list-style-type: none;
+    font-size: 15px;
+    width: 25%;
+    float: left;
+    position: relative;
+    font-weight: 400;
+}
+
+#progress-bar #step1:before {
+    content: "1"
+}
+
+#progress-bar #step2:before {
+    content: "2"
+}
+
+#progress-bar #step3:before {
+    content: "3"
+}
+
+#progress-bar #step4:before {
+    content: "4"
+}
+
+#progress-bar li:before {
+    /* "bubbles" with the step number */
+    width: 50px;
+    height: 50px;
+    line-height: 45px;
+    display: block;
+    font-size: 20px;
+    color: white; /* changes all numbers color in all bubbles */
+    background: #d3d3d3; /* changes inactive bubble color */
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+    padding: 2px
+}
+
+#progress-bar li:after {
+    /* line between "bubbles" */
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: #d3d3d3;  /* changes line between bubbles color */
+    position: absolute;
+    left: 0;
+    top: 25px;
+    z-index: -1;
+}
+
+#progress-bar li.progress-active:before,
+#progress-bar li.progress-active:after {
+    background: #df0e62;  /* changes active step color */
+}
+
+
+
+/* @MEDIA */
+/* Media query for screens with a maximum width of 768px */
+@media screen and (max-width: 768px) {
+    .navbar-brand {
+        margin-left: auto; /* Center the brand on smaller screens */
+    }
+
+    #progress-container #form {
+        width: 90%; /* Adjust the width of the form on smaller screens */
+    }
+
+    #progress-bar li:before {
+        font-size: 16px; /* Adjust the size of the step numbers on smaller screens */
+        width: 40px; /* Adjust the size of the bubbles on smaller screens */
+        height: 40px;
+        line-height: 36px;
+    }
+}

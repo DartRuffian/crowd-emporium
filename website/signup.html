@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<head>
+    <meta charset='utf-8'>
+    <meta content='IE=edge' http-equiv='X-UA-Compatible'>
+    <title>Create an Account</title>
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <link href="signup.css" rel="stylesheet" type="text/css" media="all">
+    <link rel="icon" type="image/x-icon" href="\website\assets\Images\logo_ce.png">
+</head>
+
+<body>
+    <header>
+        <h1>Crowd Emporium</h1>
+    </header>
+
+    <nav>
+        <a href="aboutus.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="events.html">Events</a>
+    </nav>
+
+    <div class="container">
+        <form id="signupForm">
+            <h1>Sign Up</h1>
+            <p id="signupStatus"></p>
+            <label for="firstNameInput">
+                First Name:
+                <input id="firstNameInput" name="first_name" placeholder="John" type="text">
+            </label><br>
+            <label for="lastNameInput">
+                Last Name:
+                <input id="lastNameInput" name="last_name" placeholder="Doe" type="text">
+            </label><br>
+            <label for="phoneInput">
+                Phone Number:
+                <input id="phoneInput" name="phone" placeholder="1112224444" type="text">
+            </label><br>
+            <label for="emailInput">
+                Email:
+                <input id="emailInput" name="username" placeholder="For@Example.com" type="email">
+            </label><br>
+            <label for="passwordInput">
+                Password:
+                <input id="passwordInput" name="password" placeholder="Password" type="password">
+            </label><br>
+            <button id="signupSubmit" class="signupSubmit"><span class="text">Sign Up!</span></button>
+
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Concert Website</p>
+    </footer>
+</body>
+
+
+<script>
+    signupSubmit.onclick = (ev) => {
+        ev.preventDefault();
+        const signupForm = document.getElementById("signupForm");
+        const data = new FormData(signupForm);
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "/user", true);
+
+        xhr.onload = (ev) => {
+            const status = document.getElementById("signupStatus");
+            const responseData = JSON.parse(xhr.responseText);
+            console.log("breakpoint");
+            if (xhr.status === 200) {
+                status.innerText = "Successfully registered an account, now logging you in, " + responseData.first_name + ".";
+
+                // login process
+                const signupStatus = document.getElementById("signupStatus");
+                const data = new FormData();
+                const passwordInput = document.getElementById("passwordInput");
+                const passwordValue = passwordInput.value;
+                data.set("username", responseData.username);
+                // data.set("password", responseData.password); -> cant do this bc responseData returns hashed password
+                data.set("password", passwordValue);
+                let xhr2 = new XMLHttpRequest();
+                xhr2.open("POST", "/token", true);
+
+                xhr2.onload = (ev) => {
+                    const responseData2 = JSON.parse(xhr2.responseText);
+                    if (xhr2.status == 200) {
+                        signupStatus.innerText = "Successfully signed up and logged in!";
+                        token = `${responseData2.token_type} ${responseData2.access_token}`;
+                        localStorage.clear();
+
+                        // put jwt token in localStorage [NOT SECURE OR SAFE VS CYBER ATTACKS (but will work for this)]
+                        localStorage.setItem('token', token);
+                        document.location.href = "events.html";
+                    } else {
+                        signupStatus.innerText = "Error signing up: " + responseData2.detail;
+                    }
+                }
+                xhr2.send(data)
+            } else {
+                status.innerText = responseData.detail;
+            }
+        }
+        xhr.send(data)
+    }
+</script>

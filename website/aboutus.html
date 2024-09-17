@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<head>
+    <meta charset='utf-8'>
+    <meta content='IE=edge' http-equiv='X-UA-Compatible'>
+    <title>About Crowd Emporium</title>
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <link href="aboutus.css" rel="stylesheet" type="text/css" media="all">
+    <link href="events.css" rel="stylesheet" type="text/css" media="all">
+    <link rel="icon" type="image/x-icon" href="\website\assets\Images\logo_ce.png">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="image-container">
+                <img src="/website/events/images/Crowd Emporium Logo4.png" alt="Logo" id="logo">
+            </div>
+            <h1>Crowd Emporium</h1>
+        </header>
+    </div>
+
+
+    <nav>
+        <a href="aboutus.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="events.html">Events</a>
+        <a id="loginStatusA"></a>
+    </nav>
+
+    <div class="container">
+        <p>
+            Welcome to Crowd Emporium, where music transcends boundaries and moments become memories.
+            <br><br>
+            Nestled in the heart of the city, Crowd Emporium stands as a beacon for music enthusiasts and performers alike. Since our inception, we have been dedicated to curating unforgettable experiences where rhythm and melody blend seamlessly with the electric energy of the crowd.
+            <br><br>
+            At Crowd Emporium, we believe in the power of live music to unite, inspire, and elevate. Our state-of-the-art venue is meticulously designed to provide unparalleled acoustics and sightlines, ensuring every note resonates with clarity and every performance is a feast for the senses.
+            <br><br>
+            Whether you're a seasoned concert-goer or a first-time attendee, there's something magical about stepping into Crowd Emporium. Our diverse lineup features a spectrum of genres, from indie darlings to chart-topping sensations, promising something for every musical palate. From intimate gigs that foster a sense of closeness to larger-than-life spectacles that ignite the stage, we are committed to showcasing the best talent from around the globe.
+            <br><br>
+            But Crowd Emporium is more than just a concert venue—it's a community hub where music lovers come together to celebrate their shared passion. From the moment you walk through our doors, you'll be greeted by friendly faces and a vibrant atmosphere that invites you to connect with fellow fans and forge lasting friendships.
+            <br><br>
+            As stewards of the music scene, we take pride in supporting emerging artists and fostering a nurturing environment where creativity thrives. Through partnerships with local talent agencies, music schools, and grassroots organizations, we strive to amplify voices that deserve to be heard and cultivate the next generation of musical luminaries.
+            <br><br>
+            Whether you're here to lose yourself in the music, discover your new favorite band, or simply soak in the ambiance, Crowd Emporium promises an experience like no other. Join us as we embark on a sonic journey filled with unforgettable performances, cherished memories, and endless possibilities. Welcome to Crowd Emporium—where every beat tells a story, and every audience member is part of the symphony.
+        </p>
+    </div>
+
+    <div class="wrapper">
+        <footer>
+            <p>&copy; 2024 Concert Website</p>
+        </footer>
+    </div>
+</body>
+
+<script>
+
+    // Change the nav link to "Login/Sign Up" or "My Account" based on whether user is signed in or out
+    const loginStatus = document.getElementById('loginStatusA');
+    const token = localStorage.getItem('token');
+    if (token === null) {
+        loginStatus.innerHTML = '<a href="login.html">Login/Sign Up</a>';
+    } else {
+        loginStatus.innerHTML = '<a href="accountInformation.html">My Account</a>';
+    }
+
+</script>

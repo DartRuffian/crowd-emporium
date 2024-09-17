@@ -1,0 +1,344 @@
+/* LOGO */
+#logo {
+    width: 100px;
+    margin-right: 20px;
+}
+
+
+.wrapper {
+    max-width: 1200px; /* Adjust the maximum width as needed */
+    margin: 0 auto; /* Center the container */
+}
+
+/* END LOGO */
+
+h1 {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+}
+
+.container {
+    display: grid;
+    grid-template: 1fr / 1fr;
+    place-items: center;
+
+
+    justify-content: center;
+    align-items: center;
+
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2d2d2d;
+    color: #fff;
+    font-size: 50px;
+    text-shadow: 2px 2px 4px rgba(245, 199, 49, 0.89);
+
+}
+
+
+
+/* NAV */
+nav {
+    background-color: #f7f7f7;
+    padding: 10px 0;
+    text-align: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav a {
+    color: #333;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+}
+
+nav a:hover{
+    color:#DF0E62;
+}
+ /* END NAV */
+footer {
+    background-color: #2d2d2d;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.container h1 {
+    padding: 10px;
+}
+#accountInformation {
+    padding: 20px;
+}
+
+.account-details{
+    text-align: center;
+}
+
+.section-details {
+    border: 1px solid #ccc; /* Add border to create a box */
+    padding: 10px; /* Add padding for spacing inside the box */
+    margin-bottom: 20px; /* Add margin to separate each section */
+}
+
+/* BUTTONS */
+.display-all-sec{
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #DF0E62;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.411);
+    margin-top: 20px;
+    margin-bottom: 10px;
+    cursor:pointer;
+}
+
+.display-all-sec:hover{
+    background-color: #fff;
+    color: #DF0E62;
+}
+
+.signOutButton {
+    cursor:pointer;
+}
+
+.create {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #DF0E62;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.411);
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 90px;
+    cursor:pointer;
+}
+
+.create:hover{
+    background-color: #fff;
+    color: #DF0E62;
+}
+
+.update {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #DF0E62;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.411);
+    margin-bottom: 10px;
+    cursor:pointer;
+}
+
+.update:hover{
+    background-color: #fff;
+    color: #DF0E62;
+}
+
+.delete {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #000000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.411);
+    margin-bottom: 10px;
+    margin-left: 80px;
+    cursor:pointer;
+}
+
+.delete:hover{
+    background-color: #ffffff;
+    color:#000;
+}
+
+/* Drop Down CSS */
+.border-box {
+    box-sizing: border-box;
+    box-shadow: #000;
+}
+.custom-select {
+    min-width: 350px;
+    position: relative;
+  }
+
+  select {
+    appearance: none;
+    /*  safari  */
+    -webkit-appearance: none;
+    /*  other styles for aesthetics */
+    width: 200px;
+    font-size: 1.15rem;
+    padding: 1em 1em 1em 1em;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 0.25rem;
+    color: #000;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  select:hover{
+    background-color: #DF0E62;
+  }
+
+  select:focus{
+    background-color: #fff;
+  }
+
+  .update-select{
+    text-align: center;
+    position: relative;
+    left: 10%;
+    top: 20px;
+  }
+
+  .big-select {
+    appearance: none;
+    /*  safari  */
+    -webkit-appearance: none;
+    /*  other styles for aesthetics */
+    width: 100%;
+    font-size: 1.15rem;
+    padding: 0.675em 6em 0.675em 1em;
+    background-color: #fff;
+    border: 1px solid #caced1;
+    border-radius: 0.25rem;
+    color: #000;
+    cursor: pointer;
+  }
+
+  .small-select {
+    appearance: none;
+    /*  safari  */
+    -webkit-appearance: none;
+    /*  other styles for aesthetics */
+    width: 100%;
+    font-size: 1.15rem;
+    padding: 0.675em 6em 0.675em 1em;
+    background-color: #fff;
+    border: 1px solid #caced1;
+    border-radius: 0.25rem;
+    color: #000;
+    cursor: pointer;
+  }
+
+  .custom-select::before,
+  .custom-select::after {
+    --size: 0.3rem;
+    content: "";
+    position: absolute;
+    right: 1rem;
+    pointer-events: none;
+  }
+
+  .custom-select::before {
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+    border-bottom: var(--size) solid black;
+    top: 40%;
+  }
+
+  .custom-select::after {
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+    border-top: var(--size) solid black;
+    top: 55%;
+  }
+
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+    /* Adjust styles for smaller screens here */
+    nav a {
+        font-size: 14px; /* Decrease font size for smaller screens */
+        margin: 0 10px; /* Reduce margin for smaller screens */
+    }
+
+    #logo {
+        width: 50px;
+        margin-right: 20px;
+        margin-left: 10px;
+    }
+
+    header {
+        font-size: 20px; /* Decrease font size for smaller screens */
+    }
+
+    .wrapper {
+        max-width: 90%; /* Adjust the maximum width for smaller screens */
+    }
+
+    .container {
+        padding: 10px; /* Add padding to the container for smaller screens */
+    }
+    select {
+        width: 100%; /* Make the select element full-width on smaller screens */
+        padding: 0.675em 1em; /* Adjust padding for smaller screens */
+        font-size: 14px; /* Decrease font size for smaller screens */
+        position:relative;
+        top: auto;
+        left: auto;
+    }
+
+    /* Adjust other styles as needed */
+}
+
+/* Media Query for medium-sized screens */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Adjust styles for medium-sized screens here */
+    nav a {
+        font-size: 16px; /* Increase font size for medium-sized screens */
+        margin: 0 15px; /* Restore margin for medium-sized screens */
+    }
+
+    header {
+        font-size: 30px; /* Increase font size for medium-sized screens */
+    }
+
+    .wrapper {
+        max-width: 90%; /* Adjust the maximum width for medium-sized screens */
+    }
+
+    .container {
+        padding: 20px; /* Increase padding for the container on medium-sized screens */
+    }
+
+    select {
+        width: 100%; /* Make the select element full-width on medium-sized screens */
+        padding: 0.675em 1em; /* Adjust padding for medium-sized screens */
+        font-size: 16px; /* Restore font size for medium-sized screens */
+        position:relative;
+        top: auto;
+        left: auto;
+    }
+
+    /* Adjust other styles as needed */
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<head>
+    <meta charset='utf-8'>
+    <meta content='IE=edge' http-equiv='X-UA-Compatible'>
+    <title>Login</title>
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <link href="login.css" rel="stylesheet" type="text/css" media="all">
+    <link rel="icon" type="image/x-icon" href="\website\assets\Images\logo_ce.png">
+</head>
+<body>
+        <header>
+            <h1>Crowd Emporium</h1>
+        </header>
+
+        <nav>
+            <a href="aboutus.html">About Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="events.html">Events</a>
+        </nav>
+
+        <div class="container">
+            <form id="loginForm">
+                <h1>Login</h1>
+                <p id="loginStatus"></p>
+                <label for="loginEmailInput">
+                    Email:
+                    <input id="loginEmailInput" name="username" placeholder="Email" type="email">
+                </label><br>
+                <label for="loginPasswordInput">
+                    Password:
+                    <input id="loginPasswordInput" name="password" placeholder="Password" type="password">
+                </label><br><br>
+
+                <button id="loginSubmit" class="loginSubmit"><span class="text">Login!</span></button>
+                <br><p><a href="signup.html">Need to create an account?</a></p>
+            </form>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 Concert Website</p>
+        </footer>
+</body>
+
+<script>
+    localStorage.clear();
+    let token = undefined;
+    const loginSubmit = document.getElementById("loginSubmit");
+    loginSubmit.onclick = (ev) => {
+        ev.preventDefault();
+        const loginForm = document.getElementById("loginForm");
+        const data = new FormData(loginForm);
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "/token", true);
+
+        xhr.onload = (ev) => {
+            const status = document.getElementById("loginStatus");
+            const responseData = JSON.parse(xhr.responseText);
+            if (xhr.status === 200) {
+                status.innerText = "Successfully logged in!";
+                token = `${responseData.token_type} ${responseData.access_token}`;
+                localStorage.clear();
+
+                // put jwt token in localStorage [NOT SECURE OR SAFE VS CYBER ATTACKS (but will work for this)]
+                localStorage.setItem('token', token);
+                document.location.href = "events.html";
+            } else {
+                status.innerText = "Error logging in: " + responseData.detail;
+            }
+        }
+        xhr.send(data)
+    }
+</script>

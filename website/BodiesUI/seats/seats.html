@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select your seats</title>
+    <link rel="icon" type="image/x-icon" href="\website\assets\images\logo_ce.png">
+    <link rel="stylesheet" type="text/css" href="/website/assets/css/style-starter.css">
+    <link rel="stylesheet" type="text/css" href="\website\assets\css\progress-bar.css">
+    <link rel="stylesheet" href="seats.css">
+    <script src="seats.js" defer></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header id="site-header" class="w3l-header fixed-top">
+            <nav class="navbar navbar-expand-lg navbar-light fill px-lg-0 py-0 px-3">
+                <div class="container">
+                    <h1><img src="/website/events/images/Crowd Emporium Logo4.png" alt="Logo" id="logo">Crowd Emporium
+                    </h1>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- progress bar -->
+        <div id="progress-container">
+            <div class="row">
+                <div class="col">
+                    <div class="px-0 pt-4 pb-0 mt-3 mb-3">
+                        <form id="form">
+                            <ul id="progress-bar">
+                                <li id="step1" class="progress-active">Section Selection</li>
+                                <li id="step2" class="progress-active">Seat Selection</li>
+                                <li id="step3" class="progress-inactive">Payment</li>
+                                <li id="step4" class="progress-inactive">E-Ticket</li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Close progress bar -->
+
+
+        <div class="seat_container">
+            <!-- <h1 class="page">Stage</h1> -->
+            <div class="front-screen">
+                <div class="screen"></div>
+                <div class="overlay"></div>
+            </div>
+
+            <div class="seats">
+                <div class="front-row first-front-row"></div>
+                <div class="front-row second-front-row"></div>
+                <div class="middle-row"></div>
+                <div class="front-row second-last-row"></div>
+                <div class="front-row first-last-row"></div>
+            </div>
+
+
+            <div class="legend">
+                <div>
+                    <div class="seat available"></div>
+                    <span>Available</span>
+                </div>
+                <div>
+                    <div class="seat selected"></div>
+                    <span>Selected</span>
+                </div>
+                <div>
+                    <div class="seat reserved"></div>
+                    <span>Reserved</span>
+                </div>
+            </div>
+            <br>
+            <div class="legend">
+                <div>
+                    <span id="vipText">VIP</span>
+                    <span id="vipSpan"></span>
+                </div>
+                <div>
+                    <span id="resText">RES</span>
+                    <span id="resSpan"></span>
+                </div>
+                <div>
+                    <span id="gaText">GA</span>
+                    <span id="gaSpan"></span>
+                </div>
+            </div>
+        </div>
+        <div class="buttons">
+            <button id="sectionsPageButton" class="goSection" onclick="goToSections()">Back to Sections</button>
+            <button id="paymentPageButton" class="goPayment" onclick="goToPayment()">Continue</button>
+        </div>
+    </div>
+</body>
+
+</html>

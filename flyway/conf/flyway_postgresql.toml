@@ -1,0 +1,10 @@
+[environments.default]
+url = "jdbc:postgresql://localhost:5432/crowd_emporium"
+user = "postgres"
+password = "admin"
+cleanDisabled = "false"
+
+[flyway]
+environment = "default"
+locations = ["filesystem:flyway/sql"]
+cleanDisabled = false

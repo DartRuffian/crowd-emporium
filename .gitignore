@@ -1,0 +1,13 @@
+# API
+__pycache__
+*.pyc
+
+# DB
+run_flyway.cmd
+
+# PyCharm
+.idea/
+Pipfile*
+
+# Tools
+output.sql

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<head>
+    <meta charset='utf-8'>
+    <meta content='IE=edge' http-equiv='X-UA-Compatible'>
+    <title>Account</title>
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <link href="accountInformation.css" rel="stylesheet" type="text/css" media="all">
+    <link rel="icon" type="image/x-icon" href="\website\assets\Images\logo_ce.png">
+</head>
+<body>
+    <div class="wrapper">
+    <header>
+        <div class="image-container">
+        <img src="/website/events/images/Crowd Emporium Logo4.png" alt="Logo" id="logo">
+        </div>
+        <h1>Crowd Emporium</h1>
+    </header>
+
+
+    <nav>
+        <a href="aboutus.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="events.html">Events</a>
+        <a href="events.html" onclick="signOut()">Sign Out</a>
+
+    </nav>
+
+    <div class="container">
+        <h2>Account Information</h2>
+        <div id="accountInformation">
+            <!-- Where the account information will show -->
+        </div>
+        <div id="ticketsContainer">
+            <!-- Where the tickets and their information will show -->
+            <!-- TODO: make refund button on each ticket -->
+        </div>
+
+
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Concert Website</p>
+    </footer>
+    </div>
+</body>
+
+<script>
+    const accountInformation = document.getElementById('accountInformation');
+    let account = localStorage.getItem('user');
+    fetch("/users/me", {
+        method: "GET",
+        headers: {
+            "Authorization": localStorage.getItem('token')
+        }
+    })
+    .then(response => response.json())
+    .then(account => {
+        const dataDiv = document.createElement('div');
+        dataDiv.className = 'info';
+
+        dataDiv.innerHTML = `
+            <div class="account-details">
+                <h3>Name: ${account.first_name} ${account.last_name}</h3>
+                <h3>Email: ${account.username}</h3>
+                <h3>Phone: ${account.phone}</h3>
+            </div>
+        `;
+        accountInformation.appendChild(dataDiv);
+
+        fetch(`/seat/user/${account.user_id}`)
+        .then(response => response.json())
+        .then(tickets => {
+            // Sorts ticket list by seat_id (inadvertently makes them sort by most recent event) DOESN'T WORK!!!!!!!!!!!!
+            tickets.sort((a, b) => a.seat_id - b.seat_id);
+            console.log("breakpoint")
+
+            const ticketsContainer = document.getElementById('ticketsContainer');
+            const ticketDiv = document.createElement('div');
+            ticketDiv.className = 'ticket';
+
+            tickets.forEach(ticket => {
+                console.log("breakpoint");
+
+                // Now using ticket.event_id get event name, date, and time
+                fetch(`/event/${ticket.event_id}`)
+                .then(response => response.json())
+                .then(event => {
+
+                    const formatDate = dateString => {
+                        const date = new Date(dateString);
+                        return new Intl.DateTimeFormat('en-US', {month: 'long', day: 'numeric'}).format(date);
+                    };
+                    // Function to format time to standard time
+                    const formatTime = timeString => {
+                        return new Date(`1970-01-01T${timeString}`).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true });
+                    };
+                    ticketDiv.innerHTML += `
+                    <div class="ticket-details">
+                        <div>
+                            <h2>${event.event_name}</h2>
+                        </div>
+                        <div>
+                            <span id="alignLeft">Event Date: </span><span id="alignRight">${formatDate(event.event_date)}</span> <br>
+                            <span id="alignLeft">Event Time: </span><span id="alignRight">${formatTime(event.event_time)}</span> <br>
+                            <span id="alignLeft">Section Number: </span><span id="alignRight">${ticket.section_number}</span> <br>
+                            <span id="alignLeft">Seat Row: </span><span id="alignRight">${ticket.seat_row}</span> <br>
+                            <span id="alignLeft">Seat Number: </span><span id="alignRight">${ticket.seat_number}</span> <br><br>
+                            <p><button class="cancelSeat" value="${ticket.seat_id}" type="button" onclick="cancelSeat(this.value)">Cancel Seat</button></p>
+                        </div>
+                    </div>
+                    `;
+                ticketsContainer.appendChild(ticketDiv);
+                })
+            })
+        })
+    })
+
+    function cancelSeat(seat_id) {
+        let purchase_price = 0;
+        fetch(`/seat/${seat_id}`)
+        .then(response => response.json())
+        .then(seat => {
+            purchase_price = seat.purchase_price;
+            fetch(`/seat/cancel/${seat_id}`, {
+                method: 'PUT',
+            })
+            setTimeout (function() {
+                location.reload();
+            }, 100);
+            alert(`You have been refunded the $${purchase_price} you paid for that seat.`);
+        })
+    }
+
+    function signOut() {
+        localStorage.clear()
+        document.location.href = "events.html";
+    }
+</script>

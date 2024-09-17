@@ -1,0 +1,162 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+}
+
+.wrapper {
+    max-width: 1200px; /* Adjust the maximum width as needed */
+    margin: 0 auto; /* Center the container */
+}
+
+.container {
+    display: grid;
+    grid-template: 1fr / 1fr;
+    place-items: center;
+    justify-content: center;
+    align-items: center;
+
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2d2d2d;
+    color: #fff;
+    font-size: 50px;
+    text-shadow: 2px 2px 4px rgba(245, 199, 49, 0.89);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+h1 {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+
+#logo {
+    width: 100px;
+    margin-right: 20px;
+}
+
+
+nav {
+    background-color: #f7f7f7;
+    padding: 10px 0;
+    text-align: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav a {
+    color: #333;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+}
+
+nav a:hover{
+    color:#DF0E62;
+}
+
+footer {
+    background-color: #2d2d2d;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.container h1 {
+    padding: 20px;
+}
+
+#accountInformation {
+    padding: 20px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    background-color: #efefef;
+    margin-bottom: 2em;
+
+}
+
+.cancelSeat {
+    margin-left: 180px;
+}
+
+h2 {
+    color: #DF0E62;
+}
+
+#ticketsContainer {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    width: 500px;
+    height: 600px;
+    overflow: auto;
+}
+
+.ticket-details {
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    margin: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#alignRight {
+    float: right;
+    margin-right: 70px;
+}
+
+#alignLeft {
+    float: left;
+    margin-left: 70px;
+}
+
+@media (max-width: 960px) {
+    header {
+        font-size: 50px;
+    }
+
+    #logo {
+        margin-right: 0;
+    }
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .wrapper {
+    padding: 0 10px; /* Adjust padding for smaller screens */
+    }
+
+    header h1 {
+        display: none;
+    }
+
+    #logo {
+        width: 150px;
+        margin-right: 20px;
+        padding: 10px;
+    }
+
+
+
+    .search-bar {
+    width: calc(100% - 30px); /* Adjust width to accommodate hamburger icon */
+    margin-top: 10px;
+    }
+
+    #menu-icon {
+    display: inline-block; /* Show the hamburger icon on smaller screens */
+    cursor: pointer;
+    margin-right: 15px;
+    font-size: 20px;
+    color: #333;
+    }
+
+    }

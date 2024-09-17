@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="payment.js" defer></script>
+  <title>Payment Pending</title>
+  <link rel="stylesheet" type="text/css" href="/website/assets/css/style-starter.css">
+  <link rel="icon" type="image/x-icon" href="\website\assets\Images\logo_ce.png">
+
+
+
+  <link rel="stylesheet" type="text/css" href="/website/assets/css/ticket-booking.css">
+
+  <!-- ..............For progress-bar............... -->
+
+
+  <link rel="stylesheet" type="text/css" href="/website/assets/css/payment.css" />
+
+</head>
+
+<body>
+  <header id="site-header" class="w3l-header fixed-top">
+
+    <!--/nav-->
+    <nav class="navbar navbar-expand-lg navbar-light fill px-lg-0 py-0 px-3">
+      <div class="container">
+        <h1><img src="/website/events/images/Crowd Emporium Logo4.png" alt="Logo" id="logo">Crowd Emporium </a></h1>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        </div>
+
+
+              </label>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container" id="progress-container-id">
+    <div class="row">
+      <div class="col">
+        <div class="px-0 pt-4 pb-0 mt-3 mb-3">
+          <form id="form">
+            <ul id="progressbar" class="progressbar-class">
+              <li class="active" id="step1">Section Selection</li>
+              <li id="step2" class="active">Seat Selection</li>
+              <li id="step3" class="active">Payment</li>
+              <li id="step4" class="not_active">E-Ticket</li>
+            </ul>
+            <br>
+
+
+              <!-- Payment Page -->
+              <div id="payment_div">
+                <div class="payment-row">
+                  <div class="col-75">
+                    <div class="payment-container">
+                      <div class="payment-row">
+                        <div class="col-50">
+
+                          <h2 id="payment-h2">Payment</h2>
+                          <div class="payment-row payment">
+                            <div id=sumPriceContainer></div>
+
+                          </div>
+
+                          <div class="payment-row">
+                            <div class="col-50">
+                              <label for="cname">Cardholder's Name</label>
+                              <input type="text" id="cname" name="cardname" placeholder="Firstname Lastname" required />
+                            </div>
+                            <div class="col-50">
+                              <label for="ccnum">Credit card number</label>
+                              <input type="text" id="ccnum" name="cardnumber" placeholder="xxxx-xxxx-xxxx-xxxx"
+                                required />
+                            </div>
+                          </div>
+                          <div class="payment-row">
+                            <div class="col-50">
+                              <label for="expmonth">Exp Month</label>
+                              <input type="text" id="expmonth" name="expmonth" placeholder="September" required />
+                            </div>
+                            <div class="col-50">
+                              <div class="payment-row">
+                                <div class="col-50">
+                                  <label for="expyear">Exp Year</label>
+                                  <input type="text" id="expyear" name="expyear" placeholder="yyyy" required />
+                                </div>
+                                <div class="col-50">
+                                  <label for="cvv">CVV</label>
+                                  <input type="text" id="cvv" name="cvv" placeholder="xxx" required />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <button id="ticketsPageButton" class="next-step pay-btn" onclick="goToTickets()">Confirm Payment</button>
+            <button id="seatsPageButton" class="cancel-pay-btn" onclick="goToSeats()">Reselect Seats</button>
+
+
+
+
+
+</body>
+
+
+</html>
