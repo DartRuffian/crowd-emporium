@@ -1,4 +1,4 @@
-# ![Crowd Emporium logo](https://gitlab.com/jccc7913624/cis-264/sp-2024/team-1/crowd-emporium/-/raw/main/website/assets/Images/logo_ce.png) Crowd Emporium
+# ![Crowd Emporium logo](https://raw.githubusercontent.com/DartRuffian/crowd-emporium/main/website/assets/Images/logo_ce.png) Crowd Emporium
 
 Crowd Emporium is an event space that caters to singers and artists so that they may host a concert for their fans. We have several seating sections each with seats marked as reserved, vip, and general admission.
 
